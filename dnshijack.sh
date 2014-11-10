@@ -16,7 +16,7 @@ domain=$1
 fname="./data/"$domain"_"$( date "+%Y%m%d%H")
 fname_p="./data/"$domain"_"$( date -d "1 hours ago" "+%Y%m%d%H")
 
-nslookup -type=NS $domain > $fname
+nslookup -type=NS $domain | grep "=" | sort > $fname
 
 date "+%Y%m%d%H" >> ./diff.log 2>&1
 diff $fname $fname_p >> ./diff.log 2>&1
