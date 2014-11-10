@@ -10,7 +10,7 @@ if ! [[ $1 =~  ^[a-zA-Z0-9_.\-]+$ ]];then
 	exit 1
 fi
 
-cd ~/sandbox/dnshijack
+cd ~/sandbox/dnshijack-simple
 domain=$1
 
 fname="./data/"$domain"_"$( date "+%Y%m%d%H")
