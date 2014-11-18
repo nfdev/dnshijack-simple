@@ -31,8 +31,8 @@ nslookup -type=NS $domain > $fname
 whois $domain > $w_fname
 
 diff <( grep "=" $fname | sort ) <( grep "=" $fname_p | sort ) >> $diff_log 2>&1
-res=$?
+[ $? -gt 1 ] && echo "^^^^^      "$fname"     ^^^^^\n" >> $diff_log
 
 diff <( grep -v "Last update of whois database:" $w_fname ) <( grep -v "Last update of whois database:" $w_fname_p ) >> $w_diff_log 2>&1
-res=$( expr $res + $? )
+[ $? -gt 1 ] && echo "^^^^^      "$fname"     ^^^^^\n" >> $diff_log
 
